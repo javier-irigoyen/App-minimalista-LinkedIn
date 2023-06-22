@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     // View::clearScreen();
-    Controller::menuInicialController();
+    Controller::menuPrincipal();
 
     return 0;
 }

@@ -5,19 +5,41 @@
 
 using namespace std;
 
-class View {
+class View
+{
 public:
-    static void mostrarMensajeBienvenida();
+    static void mostrarBienvenida();
     static void mostrarMenuOpcionesInicial();
     static int obtenerOpcion();
     static void mostrarMenuTipoUsuario();
+    static void mostrarBienvenidaUsuario(string name);
+
+    // INPUTS
     static string obtenerTipoUsuario();
     static string obtenerNombre();
     static string obtenerTelefono();
     static string obtenerCorreo();
+    static string obtenerPassword();
 
-    static void mostrarMenuProfesional();
-    static void mostrarMensajeError();
+    // PROFESIONAL
+    static void mostrarMenuProfesional(string name);
+    static void mostrarGestionPerfilProfesional();
+    static void mostrarGestionPerfilProfesionalHabilidad();
+    static void mostrarGestionPerfilProfesionalExpLaboral();
+    static void mostrarGestionPerfilProfesionalEducacion();
+
+    static void mostrarGestionContactosProfesional();
+    static void mostrarGestionPortafoliosProfesional();
+    static void mostrarGestionPublicacionesProfesional();
+
+    static void mostrarPuestosDeTrabajos();
+
+    // EMPRESA
+    static void mostrarMenuEmpresa(string name);
+    static void mostrarGestionPuestosDeTrabajoEmpresa();
+    static void mostrarGestionEventosEmpresa();
+
+    static void mostrarError();
     static void salir();
     static void clearScreen();
     // Otros métodos de la vista

@@ -10,12 +10,9 @@ using namespace std;
 class Controller
 {
 public:
-    static void menuInicialController();
+    static void menuPrincipal();
     static void registrarUsuario();
-    static void registrarProfesional();
-    static void registrarEmpresa();
-    // static void iniciarSesion();
-    // Otros métodos del controlador
+
 };
 
 #endif

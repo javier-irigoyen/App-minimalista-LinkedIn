@@ -3,15 +3,17 @@
 #include <iostream>
 
 #include "controller.hpp"
+// #include "empresaViewController.hpp"
+#include "profesionalViewController.hpp"
 #include "../view/view.hpp"
 #include "../model/profesional.hpp"
 #include "../model/empresa.hpp"
 
-//MENU INICIAL
-void Controller::menuInicialController()
+// MENU INICIAL
+void Controller::menuPrincipal()
 {
     // View::clearScreen();
-    View::mostrarMensajeBienvenida();
+    View::mostrarBienvenida();
     View::mostrarMenuOpcionesInicial();
     int opcion = View::obtenerOpcion();
     switch (opcion)
@@ -19,12 +21,13 @@ void Controller::menuInicialController()
     case 1:
     {
         View::clearScreen();
-        registrarUsuario();
+        Controller::registrarUsuario();
         break;
     }
     case 2:
     {
-        // iniciarSesion();
+        View::clearScreen();
+        // View::iniciarSesion();
         break;
     }
     case 3:
@@ -34,13 +37,13 @@ void Controller::menuInicialController()
     }
     default:
     {
-        View::mostrarMensajeError();
-        Controller::menuInicialController();
+        View::mostrarError();
+        Controller::menuPrincipal();
     }
     }
 }
 
-//MENU REGISTRO NUEVO USUARIO
+// MENU REGISTRO NUEVO USUARIO
 void Controller::registrarUsuario()
 {
     View::mostrarMenuTipoUsuario();
@@ -50,12 +53,12 @@ void Controller::registrarUsuario()
     {
     case 1:
     {
-        registrarProfesional();
+        ProfesionalViewController::registrarProfesional();
     }
     case 2:
     {
 
-        registrarEmpresa();
+        EmpresaViewController::registrarEmpresa();
     }
     case 3:
     {
@@ -64,65 +67,9 @@ void Controller::registrarUsuario()
     }
     default:
     {
-        View::mostrarMensajeError();
+        View::mostrarError();
         Controller::registrarUsuario();
     }
     }
 }
-//PROFESIONAL
-void Controller::registrarProfesional()
-{
-    string nombre = View::obtenerNombre();
-    string telefono = View::obtenerTelefono();
-    string correo = View::obtenerCorreo();
-
-    // Realizar el registro del profesional
-    // ...
-
-    cout << "¡Registro exitoso como profesional!" << endl;
-}
-
-//EMPRESA
-void Controller::registrarEmpresa()
-{
-    string nombre = View::obtenerNombre();
-    string telefono = View::obtenerTelefono();
-    string correo = View::obtenerCorreo();
-
-    // Realizar el registro de la empresa
-    // ...
-
-    cout << "¡Registro exitoso como empresa!" << endl;
-}
-
-//MENU PROFESIONAL LOGEADO
-void Controller::menuProfesional()
-{
-    View::mostrarMenuProfesional();
-    int opcion = View::obtenerOpcion();
-
-    switch (opcion)
-    {
-    case 1:
-    {
-        registrarProfesional();
-    }
-    case 2:
-    {
-
-        registrarEmpresa();
-    }
-    case 3:
-    {
-        View::salir();
-        break;
-    }
-    default:
-    {
-        View::mostrarMensajeError();
-        Controller::registrarUsuario();
-    }
-    }
-}
-// Implementa los demás métodos del controlador
 #endif
