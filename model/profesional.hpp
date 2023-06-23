@@ -1,17 +1,19 @@
 #ifndef __PROFESIONAL_HPP__
 #define __PROFESIONAL_HPP__
 #include <string>
-
+#include "model.hpp"
 using namespace std;
 
-class Profesional {
+class Profesional : public Model{
 private:
-    string nombre;
-    string correo;
-    string telefono;
+    string name;
+    string mail;
+    string phone;
 
 public:
-    Profesional(const string& nombre, const string& correo, const string& telefono);
-    // Otros métodos y atributos del modelo
+    Profesional(const string& name, const string& mail, const string& phone);
+    string getName();
+    string getMail();
+    string getPhone();
 };
 #endif

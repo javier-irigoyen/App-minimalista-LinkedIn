@@ -19,36 +19,38 @@ void ProfesionalController::registrarProfesional()
 
     // Realizar el registro del profesional
     // ...
+    Profesional profesional = Profesional(nombre, telefono, correo);
+    profesional.save();
 
     cout << "¡Registro exitoso como profesional!" << endl;
     ProfesionalViewController::menuProfesional(nombre);
 }
 
 // INTERACCION CON MODELOS
-void ProfesionalController::recomendarProfesional(){}
+void ProfesionalController::recomendarProfesional() {}
 
-void ProfesionalController::registrarHabilidad(){}
-void ProfesionalController::editarHabilidad(){}
-void ProfesionalController::eliminarHabilidad(){}
+void ProfesionalController::registrarHabilidad() {}
+void ProfesionalController::editarHabilidad() {}
+void ProfesionalController::eliminarHabilidad() {}
 
-void ProfesionalController::registrarEducacion(){}
-void ProfesionalController::editarEducacion(){}
-void ProfesionalController::eliminarEducacion(){}
+void ProfesionalController::registrarEducacion() {}
+void ProfesionalController::editarEducacion() {}
+void ProfesionalController::eliminarEducacion() {}
 
-void ProfesionalController::registrarContacto(){}
-void ProfesionalController::editarContacto(){}
-void ProfesionalController::eliminarContacto(){}
+void ProfesionalController::registrarContacto() {}
+void ProfesionalController::editarContacto() {}
+void ProfesionalController::eliminarContacto() {}
 
-void ProfesionalController::registrarPortafolio(){}
-void ProfesionalController::editarPortafolio(){}
-void ProfesionalController::eliminarPortafolio(){}
+void ProfesionalController::registrarPortafolio() {}
+void ProfesionalController::editarPortafolio() {}
+void ProfesionalController::eliminarPortafolio() {}
 
-void ProfesionalController::registrarPublicacion(){}
-void ProfesionalController::editarPublicacion(){}
-void ProfesionalController::eliminarPublicacion(){}
+void ProfesionalController::registrarPublicacion() {}
+void ProfesionalController::editarPublicacion() {}
+void ProfesionalController::eliminarPublicacion() {}
 
-void ProfesionalController::puestosDeTrabajoCategoria(){}
-void ProfesionalController::puestosDeTrabajoRecientes(){}
+void ProfesionalController::puestosDeTrabajoCategoria() {}
+void ProfesionalController::puestosDeTrabajoRecientes() {}
 
 // void Controller::registrarPuestosDeTrabajo(){}
 // void Controller::editarPuestosDeTrabajo(){}
