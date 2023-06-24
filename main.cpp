@@ -8,6 +8,8 @@ using namespace std;
 int main()
 {
     // View::clearScreen();
+    Controller c;
+    c.loadCollections();
     Controller::menuPrincipal();
 
     return 0;

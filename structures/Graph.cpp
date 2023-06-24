@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
+#include <list>
 #include <queue>
 #include <stdio.h>
+#include <fstream>
 
 using namespace std;
 
@@ -10,19 +12,23 @@ class Graph
 {
 private:
     int numVertices;
-    vector<vector<T>> matrizAdy;
+    vector<list<T>> matrizAdy;
+    void (*procesar)(T); // puntero a función
+    short (*criterio)(T, T);
 
 public:
-    grafo()
+    Graph(void (*nuevaFuncion)(T), short (*criterio)(T, T))
     {
-        numVertices = 0;
+        this->numVertices = 0;
+        this->procesar = nuevaFuncion;
+        this->criterio = criterio;
     }
 
     void agregarNodo(T tipo)
     {
         if (matrizAdy.empty())
         {
-            vector<T> lista;
+            list<T> lista;
             lista.push_back(tipo);
             matrizAdy.push_back(lista);
             numVertices++;
@@ -30,9 +36,9 @@ public:
         else
         {
             bool existeNodo = false;
-            for (int c = 0; c < matrizAdy.size(); ++c)
+            for (size_t c = 0; c < matrizAdy.size(); ++c) // para cada fila
             {
-                if (tipo == matrizAdy[c].at(0))
+                if (tipo == matrizAdy[c].front())
                 {
                     existeNodo = true;
                     break;
@@ -40,7 +46,7 @@ public:
             }
             if (!existeNodo)
             {
-                vector<T> lista;
+                list<T> lista;
                 lista.push_back(tipo);
                 matrizAdy.push_back(lista);
                 numVertices++;
@@ -48,39 +54,40 @@ public:
         }
     }
 
-    void agregarArista(T origen, T destino)
+    void agregarArista(T origen, T destino) // no dirigido
     {
         agregarNodo(origen);
         agregarNodo(destino);
-        for (int c = 0; c < matrizAdy.size(); ++c)
+        for (size_t c = 0; c < matrizAdy.size(); ++c)
         {
-            if (matrizAdy[c].at(0) == origen)
+            if (matrizAdy[c].front() == origen)
             {
                 matrizAdy[c].push_back(destino);
             }
-            if (matrizAdy[c].at(0) == destino)
+            if (matrizAdy[c].front() == destino)
             {
                 matrizAdy[c].push_back(origen);
             }
         }
     }
 
-    void imprimeConexionesDirectas(T tipo)
+    void imprimeConexionesDirectas(T tipo) // imprime los componentes cols de la fila seleccionada (obj)
     {
         cout << tipo << " = ";
-        for (int c = 0; c < matrizAdy.size(); ++c)
+        for (size_t c = 0; c < matrizAdy.size(); ++c)
         {
-            if (matrizAdy[c].at(0) == tipo)
+            if (matrizAdy[c].front() == tipo)
             {
-                for (int i = 1; i < matrizAdy[c].size(); ++i)
+                typename list<T>::iterator it;
+                for (it = matrizAdy[c].begin(); it != matrizAdy[c].end(); ++it)
                 {
-                    if (i == matrizAdy[c].size() - 1)
+                    if (it == prev(matrizAdy[c].end()))
                     {
-                        cout << matrizAdy[c].at(i);
+                        cout << *it;
                     }
                     else
                     {
-                        cout << matrizAdy[c].at(i) << " - ";
+                        cout << *it << " - ";
                     }
                 }
             }
@@ -88,9 +95,9 @@ public:
         cout << endl;
     }
 
-    void muestraCaminoBFS(T origen, T destino)
+    void muestraCaminoBFS(T origen, T destino) // busqueda
     {
-        vector<bool> visitado(numVertices, false);
+        vector<bool> visitado(numVertices, false); // vector visitado de tamanio numVertices inicializando en false
         queue<T> cola;
         visitado[origen] = true;
         cola.push(origen);
@@ -100,16 +107,39 @@ public:
             cola.pop();
             cout << actual << " ";
 
-            for (int i = 0; i < numVertices; i++)
+            typename list<T>::iterator it;
+            for (it = matrizAdy[actual].begin(); it != matrizAdy[actual].end(); ++it)
             {
-                if (matrizAdy[actual][i] && !visitado[i])
+                if (!visitado[*it])
                 {
-                    visitado[i] = true;
-                    cola.push(i);
+                    visitado[*it] = true;
+                    cola.push(*it);
                 }
             }
         }
     };
+
+    void saveToFile(const string &filename)
+    {
+        ofstream file(filename);
+        if (file.is_open())
+        {
+            for (const auto &lista : matrizAdy)
+            {
+                for (const auto &elemento : lista)
+                {
+                    file << elemento << " ";
+                }
+                file << endl;
+            }
+            file.close();
+            cout << "Los datos se han guardado en el archivo \"" << filename << "\"." << endl;
+        }
+        else
+        {
+            cout << "No se pudo abrir el archivo \"" << filename << "\" para guardar los datos." << endl;
+        }
+    }
 };
 // class Profesional
 // {

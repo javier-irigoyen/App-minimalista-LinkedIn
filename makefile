@@ -11,9 +11,12 @@ CXXFLAGS = -std=c++11 -Wall
 SRCDIR = .
 VIEWDIR = view
 CONTROLLERDIR = controller
+COLLECTIONSDIR= collections
+MODELDIR= model
+STRUCTURESDIR= structures
 
 # Archivos fuente
-SRCS = $(wildcard $(SRCDIR)/*.cpp $(VIEWDIR)/*.cpp $(CONTROLLERDIR)/*.cpp)
+SRCS = $(wildcard $(SRCDIR)/*.cpp $(VIEWDIR)/*.cpp $(MODELDIR)/*.cpp $(CONTROLLERDIR)/*.cpp $(COLLECTIONSDIR)/*.cpp $(STRUCTURESDIR)/*.cpp)
 
 # Archivos objeto generados a partir de los archivos fuente
 OBJS = $(SRCS:.cpp=.o)

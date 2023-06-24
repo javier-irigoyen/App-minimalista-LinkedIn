@@ -1,24 +1,41 @@
-#ifndef __PROFESIONAL_CPP__
-#define __PROFESIONAL_CPP__
 #include "profesional.hpp"
-
-Profesional::Profesional(const string &name, const string &mail, const string &phone)
+#include <iostream>
+#include <fstream>
+Profesional::Profesional(const unsigned long &id, const string &name, const string &mail, const unsigned long &phone, const unsigned long &dni)
 {
+    this->id = id;
     this->name = name;
     this->mail = mail;
     this->phone = phone;
+    this->dni = dni;
 }
-string Profesional::getName()
+unsigned long Profesional::getId() const
+{
+    return this->id;
+}
+string Profesional::getName() const
 {
     return this->name;
 }
-string Profesional::getMail()
+string Profesional::getMail() const
 {
-    return this->name;
-}
-string Profesional::getPhone()
-{
-    return this->name;
+    return this->mail;
 }
 
-#endif
+unsigned long Profesional::getPhone() const
+{
+    return this->phone;
+}
+unsigned long Profesional::getDni() const
+{
+    return this->dni;
+}
+bool Profesional::operator==(const Profesional &otro) const
+{
+    return id == otro.getId();
+}
+ostream &operator<<(ostream &os, const Profesional &profesional)
+{
+    os << profesional.getName();
+    return os;
+}

@@ -9,6 +9,13 @@
 #include "../model/profesional.hpp"
 #include "../model/empresa.hpp"
 
+void Controller::loadCollections()
+{
+    graphProfesionales.load();
+    graphProfesionales.print();
+    // tp.print();
+    cin.get();
+}
 // MENU INICIAL
 void Controller::menuPrincipal()
 {
@@ -72,4 +79,5 @@ void Controller::registrarUsuario()
     }
     }
 }
+
 #endif

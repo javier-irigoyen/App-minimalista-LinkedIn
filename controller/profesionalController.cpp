@@ -19,9 +19,9 @@ void ProfesionalController::registrarProfesional()
 
     // Realizar el registro del profesional
     // ...
-    Profesional profesional = Profesional(nombre, telefono, correo);
-    profesional.save();
-
+    // Profesional profesional = Profesional(nombre, telefono, correo);
+    // profesional.save();
+    
     cout << "¡Registro exitoso como profesional!" << endl;
     ProfesionalViewController::menuProfesional(nombre);
 }
