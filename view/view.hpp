@@ -2,7 +2,7 @@
 #define __VIEW_HPP__
 #include <iostream>
 #include <string>
-
+typedef unsigned long ul;
 using namespace std;
 
 class View
@@ -17,7 +17,9 @@ public:
     // INPUTS
     static string obtenerTipoUsuario();
     static string obtenerNombre();
-    static string obtenerTelefono();
+    static ul obtenerTelefono();
+    static ul obtenerId();
+    static ul obtenerDni();
     static string obtenerCorreo();
     static string obtenerPassword();
 

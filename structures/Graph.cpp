@@ -133,7 +133,7 @@ public:
                 file << endl;
             }
             file.close();
-            cout << "Los datos se han guardado en el archivo \"" << filename << "\"." << endl;
+            // cout << "Los datos se han guardado en el archivo \"" << filename << "\"." << endl;
         }
         else
         {

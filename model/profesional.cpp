@@ -1,7 +1,7 @@
 #include "profesional.hpp"
 #include <iostream>
 #include <fstream>
-Profesional::Profesional(const unsigned long &id, const string &name, const string &mail, const unsigned long &phone, const unsigned long &dni)
+Profesional::Profesional(const ul &id, const string &name, const string &mail, const ul &phone, const ul &dni)
 {
     this->id = id;
     this->name = name;
@@ -9,7 +9,7 @@ Profesional::Profesional(const unsigned long &id, const string &name, const stri
     this->phone = phone;
     this->dni = dni;
 }
-unsigned long Profesional::getId() const
+ul Profesional::getId() const
 {
     return this->id;
 }
@@ -22,20 +22,29 @@ string Profesional::getMail() const
     return this->mail;
 }
 
-unsigned long Profesional::getPhone() const
+ul Profesional::getPhone() const
 {
     return this->phone;
 }
-unsigned long Profesional::getDni() const
+ul Profesional::getDni() const
 {
     return this->dni;
 }
+
 bool Profesional::operator==(const Profesional &otro) const
 {
     return id == otro.getId();
 }
 ostream &operator<<(ostream &os, const Profesional &profesional)
 {
-    os << profesional.getName();
+    os << profesional.getId() << "," << profesional.getName() << "," << profesional.getMail() << "," << profesional.getPhone() << " |";
     return os;
+}
+string Profesional::getFileName() const
+{
+    return "Profesionales.txt";
+}
+string Profesional::getAttributes() const
+{
+    return to_string(id) + "," + name + "," + mail + "," + to_string(phone) + "," + to_string(dni);
 }

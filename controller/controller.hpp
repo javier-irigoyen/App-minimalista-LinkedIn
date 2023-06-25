@@ -4,7 +4,7 @@
 #include <string>
 #include "../model/profesional.hpp"
 #include "../model/empresa.hpp"
-#include "../collections/GraphProfesional.cpp"
+#include "../collections/GraphProfesional.hpp"
 
 using namespace std;
 

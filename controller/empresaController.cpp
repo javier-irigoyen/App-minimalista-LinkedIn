@@ -1,5 +1,3 @@
-#ifndef __EMPRESA_CONTROLLER_CPP__
-#define __EMPRESA_CONTROLLER_CPP__
 #include <iostream>
 
 #include "controller.hpp"
@@ -9,13 +7,23 @@
 #include "../model/profesional.hpp"
 #include "../model/empresa.hpp"
 
-void EmpresaController::registrarPuestosDeTrabajo(){}
-void EmpresaController::editarPuestosDeTrabajo(){}
-void EmpresaController::eliminarPuestosDeTrabajo(){}
+void EmpresaController::registrarEmpresa()
+{
+    cout << "Registro Empresa" << endl;
+    string nombre = View::obtenerNombre();
+    ul telefono = View::obtenerTelefono();
+    string correo = View::obtenerCorreo();
 
-void EmpresaController::registrarEvento(){}
-void EmpresaController::editarEvento(){}
-void EmpresaController::eliminarEvento(){}
+    // Realizar el registro de la empresa
+    // ...
 
+    cout << "¡Registro exitoso como empresa!" << endl;
+    EmpresaViewController::menuEmpresa(nombre);
+}
+void EmpresaController::registrarPuestosDeTrabajo() {}
+void EmpresaController::editarPuestosDeTrabajo() {}
+void EmpresaController::eliminarPuestosDeTrabajo() {}
 
-#endif
+void EmpresaController::registrarEvento() {}
+void EmpresaController::editarEvento() {}
+void EmpresaController::eliminarEvento() {}

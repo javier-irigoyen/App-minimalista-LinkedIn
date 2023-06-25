@@ -1,32 +1,19 @@
-#ifndef __PROFESIONAL_VIEW_CONTROLLER_CPP__
-#define __PROFESIONAL_VIEW_CONTROLLER_CPP__
 #include <iostream>
 
 #include "controller.hpp"
 #include "empresaViewController.hpp"
 #include "profesionalViewController.hpp"
+#include "profesionalController.hpp"
 #include "../view/view.hpp"
 #include "../model/profesional.hpp"
 #include "../model/empresa.hpp"
 
 // PROFESIONAL
-void ProfesionalViewController::registrarProfesional()
-{
-    string nombre = View::obtenerNombre();
-    string telefono = View::obtenerTelefono();
-    string correo = View::obtenerCorreo();
-
-    // Realizar el registro del profesional
-    // ...
-
-    cout << "¡Registro exitoso como profesional!" << endl;
-    ProfesionalViewController::menuProfesional(nombre);
-}
 
 // MENU PROFESIONAL LOGEADO
-void ProfesionalViewController::menuProfesional(string name)
+void ProfesionalViewController::menuProfesional(Profesional profesional)
 {
-    View::mostrarMenuProfesional(name);
+    View::mostrarMenuProfesional(profesional.getName());
     int opcion = View::obtenerOpcion();
 
     switch (opcion)
@@ -36,41 +23,49 @@ void ProfesionalViewController::menuProfesional(string name)
         // View::mostrarGestionPerfilProfesional();
         // int opcion = View::obtenerOpcion();
         ProfesionalViewController::gestionarPerfil();
+        break;
     }
     case 2:
     {
 
-        ProfesionalViewController::gestionarContactos();
+        ProfesionalViewController::gestionarContactos(profesional);
+        break;
     }
     case 3:
     {
 
         ProfesionalViewController::gestionarPortafolios();
+        break;
     }
     case 4:
     {
 
         ProfesionalViewController::gestionarPublicaciones();
+        break;
     }
     case 5:
     {
 
         ProfesionalViewController::puestosDeTrabajoDisponibles();
+        break;
     }
     case 6:
     {
 
         ProfesionalViewController::recomendarProfesional();
+        break;
     }
     case 7:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
-        ProfesionalViewController::menuProfesional(name);
+        // ProfesionalViewController::menuProfesional(name);
+        break;
     }
     }
 }
@@ -86,26 +81,31 @@ void ProfesionalViewController::gestionarPerfil()
     {
 
         ProfesionalViewController::gestionarHabilidades();
+        break;
     }
     case 2:
     {
 
         ProfesionalViewController::gestionarExpLaboral();
+        break;
     }
     case 3:
     {
 
         ProfesionalViewController::gestionarEducacion();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         ProfesionalViewController::gestionarPerfil();
+        break;
     }
     }
 }
@@ -121,26 +121,31 @@ void ProfesionalViewController::gestionarHabilidades()
     {
 
         ProfesionalViewController::registrarHabilidad();
+        break;
     }
     case 2:
     {
 
         ProfesionalViewController::editarHabilidad();
+        break;
     }
     case 3:
     {
 
         ProfesionalViewController::eliminarHabilidad();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         ProfesionalViewController::gestionarHabilidades();
+        break;
     }
     }
 }
@@ -155,26 +160,31 @@ void ProfesionalViewController::gestionarExpLaboral()
     {
 
         ProfesionalViewController::registrarHabilidad();
+        break;
     }
     case 2:
     {
 
         ProfesionalViewController::editarHabilidad();
+        break;
     }
     case 3:
     {
 
         ProfesionalViewController::eliminarHabilidad();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         ProfesionalViewController::gestionarExpLaboral();
+        break;
     }
     }
 }
@@ -189,32 +199,37 @@ void ProfesionalViewController::gestionarEducacion()
     {
 
         ProfesionalViewController::registrarEducacion();
+        break;
     }
     case 2:
     {
 
         ProfesionalViewController::editarEducacion();
+        break;
     }
     case 3:
     {
 
         ProfesionalViewController::eliminarEducacion();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         ProfesionalViewController::gestionarEducacion();
+        break;
     }
     }
 }
 
-//GESTIONAR CONTACTOS
-void ProfesionalViewController::gestionarContactos()
+// GESTIONAR CONTACTOS
+void ProfesionalViewController::gestionarContactos(Profesional profesional)
 {
     View::mostrarGestionContactosProfesional();
     int opcion = View::obtenerOpcion();
@@ -223,31 +238,36 @@ void ProfesionalViewController::gestionarContactos()
     case 1:
     {
 
-        ProfesionalViewController::registrarContacto();
+        ProfesionalController::registrarContacto(profesional);
+        break;
     }
     case 2:
     {
 
         ProfesionalViewController::editarContacto();
+        break;
     }
     case 3:
     {
 
         ProfesionalViewController::eliminarContacto();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
-        ProfesionalViewController::gestionarContactos();
+        ProfesionalViewController::gestionarContactos(profesional);
+        break;
     }
     }
 }
-//GESTIONAR PORTAFOLIO
+// GESTIONAR PORTAFOLIO
 void ProfesionalViewController::gestionarPortafolios()
 {
     View::mostrarGestionPortafoliosProfesional();
@@ -258,31 +278,36 @@ void ProfesionalViewController::gestionarPortafolios()
     {
 
         ProfesionalViewController::registrarPortafolio();
+        break;
     }
     case 2:
     {
 
         ProfesionalViewController::editarPortafolio();
+        break;
     }
     case 3:
     {
 
         ProfesionalViewController::eliminarPortafolio();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         ProfesionalViewController::gestionarPortafolios();
+        break;
     }
     }
 }
 
-//GESTIONAR PUBLICACIONES
+// GESTIONAR PUBLICACIONES
 void ProfesionalViewController::gestionarPublicaciones()
 {
     View::mostrarGestionPublicacionesProfesional();
@@ -293,31 +318,36 @@ void ProfesionalViewController::gestionarPublicaciones()
     {
 
         ProfesionalViewController::registrarPublicacion();
+        break;
     }
     case 2:
     {
 
         ProfesionalViewController::editarPublicacion();
+        break;
     }
     case 3:
     {
 
         ProfesionalViewController::eliminarPublicacion();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         ProfesionalViewController::gestionarPublicaciones();
+        break;
     }
     }
 }
 
-//BUSCAR PUESTOS DE TRABAJOS DISPONIBLES
+// BUSCAR PUESTOS DE TRABAJOS DISPONIBLES
 void ProfesionalViewController::puestosDeTrabajoDisponibles()
 {
     View::mostrarPuestosDeTrabajos();
@@ -328,50 +358,54 @@ void ProfesionalViewController::puestosDeTrabajoDisponibles()
     {
 
         ProfesionalViewController::puestosDeTrabajoCategoria();
+        break;
     }
     case 2:
     {
 
         ProfesionalViewController::puestosDeTrabajoRecientes();
+        break;
     }
     case 3:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         ProfesionalViewController::puestosDeTrabajoDisponibles();
+        break;
     }
     }
 }
 
 // INTERACCION CON MODELOS
-void ProfesionalViewController::recomendarProfesional(){}
+void ProfesionalViewController::recomendarProfesional() {}
 
-void ProfesionalViewController::registrarHabilidad(){}
-void ProfesionalViewController::editarHabilidad(){}
-void ProfesionalViewController::eliminarHabilidad(){}
+void ProfesionalViewController::registrarHabilidad() {}
+void ProfesionalViewController::editarHabilidad() {}
+void ProfesionalViewController::eliminarHabilidad() {}
 
-void ProfesionalViewController::registrarEducacion(){}
-void ProfesionalViewController::editarEducacion(){}
-void ProfesionalViewController::eliminarEducacion(){}
+void ProfesionalViewController::registrarEducacion() {}
+void ProfesionalViewController::editarEducacion() {}
+void ProfesionalViewController::eliminarEducacion() {}
 
-void ProfesionalViewController::registrarContacto(){}
-void ProfesionalViewController::editarContacto(){}
-void ProfesionalViewController::eliminarContacto(){}
+void ProfesionalViewController::registrarContacto() {}
+void ProfesionalViewController::editarContacto() {}
+void ProfesionalViewController::eliminarContacto() {}
 
-void ProfesionalViewController::registrarPortafolio(){}
-void ProfesionalViewController::editarPortafolio(){}
-void ProfesionalViewController::eliminarPortafolio(){}
+void ProfesionalViewController::registrarPortafolio() {}
+void ProfesionalViewController::editarPortafolio() {}
+void ProfesionalViewController::eliminarPortafolio() {}
 
-void ProfesionalViewController::registrarPublicacion(){}
-void ProfesionalViewController::editarPublicacion(){}
-void ProfesionalViewController::eliminarPublicacion(){}
+void ProfesionalViewController::registrarPublicacion() {}
+void ProfesionalViewController::editarPublicacion() {}
+void ProfesionalViewController::eliminarPublicacion() {}
 
-void ProfesionalViewController::puestosDeTrabajoCategoria(){}
-void ProfesionalViewController::puestosDeTrabajoRecientes(){}
+void ProfesionalViewController::puestosDeTrabajoCategoria() {}
+void ProfesionalViewController::puestosDeTrabajoRecientes() {}
 
 // void Controller::registrarPuestosDeTrabajo(){}
 // void Controller::editarPuestosDeTrabajo(){}
@@ -380,4 +414,3 @@ void ProfesionalViewController::puestosDeTrabajoRecientes(){}
 // void Controller::registrarEvento(){}
 // void Controller::editarEvento(){}
 // void Controller::eliminarEvento(){}
-#endif

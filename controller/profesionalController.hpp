@@ -25,7 +25,7 @@ public:
     static void editarEducacion();
     static void eliminarEducacion();
 
-    static void registrarContacto();
+    static void registrarContacto(Profesional profesional);
     static void editarContacto();
     static void eliminarContacto();
 

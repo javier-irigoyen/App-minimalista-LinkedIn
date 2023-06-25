@@ -1,5 +1,3 @@
-#ifndef __VIEW_CPP__
-#define __VIEW_CPP__
 #include "view.hpp"
 
 // MENSAJE BIENVENIDA
@@ -47,14 +45,57 @@ string View::obtenerNombre()
     return nombre;
 }
 
-string View::obtenerTelefono()
+ul View::obtenerTelefono()
 {
-    string telefono;
+    ul telefono;
+    string line;
     cout << "Ingrese su teléfono: ";
-    getline(cin, telefono);
+    getline(cin, line);
+    try
+    {
+        telefono = stoul(line);
+    }
+    catch (const exception &e)
+    {
+        cout << "Error al leer el Teléfono: " << e.what() << endl;
+        telefono = obtenerTelefono();
+    }
     return telefono;
 }
-
+ul View::obtenerId()
+{
+    ul id;
+    string line;
+    cout << "Ingrese su ID: ";
+    getline(cin, line);
+    try
+    {
+        id = stoul(line);
+    }
+    catch (const exception &e)
+    {
+        cout << "Error al leer el ID: " << e.what() << endl;
+        id = obtenerId();
+    }
+    return id;
+}
+ul View::obtenerDni()
+{
+    ul dni;
+    string line;
+    cout << "Ingrese su DNI: ";
+    getline(cin, line);
+    try
+    {
+        dni = stoul(line);
+    }
+    catch (const exception &e)
+    {
+        cout << "Error al leer el DNI: " << e.what() << endl;
+        dni = obtenerId();
+    }
+    return dni;
+}
 string View::obtenerCorreo()
 {
     string correo;
@@ -208,6 +249,3 @@ void View::clearScreen()
 {
     cout << "\033[2J\033[1;1H";
 }
-
-// Implementa los demás métodos de la vista
-#endif

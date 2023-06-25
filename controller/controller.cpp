@@ -1,10 +1,10 @@
-#ifndef __CONTROLLER_CPP__
-#define __CONTROLLER_CPP__
 #include <iostream>
 
 #include "controller.hpp"
 // #include "empresaViewController.hpp"
 #include "profesionalViewController.hpp"
+#include "profesionalController.hpp"
+#include "empresaController.hpp"
 #include "../view/view.hpp"
 #include "../model/profesional.hpp"
 #include "../model/empresa.hpp"
@@ -12,7 +12,7 @@
 void Controller::loadCollections()
 {
     graphProfesionales.load();
-    graphProfesionales.print();
+    graphProfesionales.save();
     // tp.print();
     cin.get();
 }
@@ -46,6 +46,7 @@ void Controller::menuPrincipal()
     {
         View::mostrarError();
         Controller::menuPrincipal();
+        break;
     }
     }
 }
@@ -60,12 +61,14 @@ void Controller::registrarUsuario()
     {
     case 1:
     {
-        ProfesionalViewController::registrarProfesional();
+        ProfesionalController::registrarProfesional();
+        break;
     }
     case 2:
     {
 
-        EmpresaViewController::registrarEmpresa();
+        EmpresaController::registrarEmpresa();
+        break;
     }
     case 3:
     {
@@ -76,8 +79,7 @@ void Controller::registrarUsuario()
     {
         View::mostrarError();
         Controller::registrarUsuario();
+        break;
     }
     }
 }
-
-#endif

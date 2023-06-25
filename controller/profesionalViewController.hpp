@@ -12,12 +12,12 @@ using namespace std;
 class ProfesionalViewController: public Controller
 {
 public:
-    static void registrarProfesional();
+    // static void registrarProfesional();
 
-    static void menuProfesional(string nombre);
+    static void menuProfesional(Profesional profesional);
 
     static void gestionarPerfil();
-    static void gestionarContactos();
+    static void gestionarContactos(Profesional profesional);
     static void gestionarPortafolios();
     static void gestionarPublicaciones();
     static void puestosDeTrabajoDisponibles();

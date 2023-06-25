@@ -1,5 +1,3 @@
-#ifndef __EMPRESA_VIEW_CONTROLLER_CPP__
-#define __EMPRESA_VIEW_CONTROLLER_CPP__
 #include <iostream>
 
 #include "controller.hpp"
@@ -10,18 +8,7 @@
 #include "../model/empresa.hpp"
 
 // EMPRESA
-void EmpresaViewController::registrarEmpresa()
-{
-    string nombre = View::obtenerNombre();
-    string telefono = View::obtenerTelefono();
-    string correo = View::obtenerCorreo();
 
-    // Realizar el registro de la empresa
-    // ...
-
-    cout << "¡Registro exitoso como empresa!" << endl;
-    EmpresaViewController::menuEmpresa(nombre);
-}
 // MENU EMPRESA LOGEADO
 void EmpresaViewController::menuEmpresa(string name)
 {
@@ -33,21 +20,25 @@ void EmpresaViewController::menuEmpresa(string name)
     case 1:
     {
         EmpresaViewController::gestionarPuestosDeTrabajo();
+        break;
     }
     case 2:
     {
 
         EmpresaViewController::gestionarEventos();
+        break;
     }
     case 3:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         EmpresaViewController::menuEmpresa(name);
+        break;
     }
     }
 }
@@ -62,26 +53,31 @@ void EmpresaViewController::gestionarPuestosDeTrabajo()
     {
 
         EmpresaController::registrarPuestosDeTrabajo();
+        break;
     }
     case 2:
     {
 
         EmpresaController::editarPuestosDeTrabajo();
+        break;
     }
     case 3:
     {
 
         EmpresaController::eliminarPuestosDeTrabajo();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         EmpresaViewController::gestionarPuestosDeTrabajo();
+        break;
     }
     }
 }
@@ -96,27 +92,31 @@ void EmpresaViewController::gestionarEventos()
     {
 
         EmpresaController::registrarEvento();
+        break;
     }
     case 2:
     {
 
         EmpresaController::editarEvento();
+        break;
     }
     case 3:
     {
 
         EmpresaController::eliminarEvento();
+        break;
     }
     case 4:
     {
         View::salir();
+        Controller::menuPrincipal();
         break;
     }
     default:
     {
         View::mostrarError();
         EmpresaViewController::gestionarEventos();
+        break;
     }
     }
 }
-#endif

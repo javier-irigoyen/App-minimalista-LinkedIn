@@ -8,9 +8,10 @@
 
 using namespace std;
 
-class EmpresaController: public Controller
+class EmpresaController : public Controller
 {
 public:
+    static void registrarEmpresa();
     static void registrarPuestosDeTrabajo();
     static void editarPuestosDeTrabajo();
     static void eliminarPuestosDeTrabajo();
