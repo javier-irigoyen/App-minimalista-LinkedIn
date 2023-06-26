@@ -2,7 +2,3 @@
 2,Luis,Luis@gmail.com,993994620 | 1,Javier,sharvel.irigoyen@gmail.com,993994620 | 3,Andrea,Andrea@gmail.com,993994620 | 4,Francisco,Francisco@gmail.com,993994620 | 
 4,Francisco,Francisco@gmail.com,993994620 | 1,Javier,sharvel.irigoyen@gmail.com,993994620 | 2,Luis,Luis@gmail.com,993994620 | 
 3,Andrea,Andrea@gmail.com,993994620 | 2,Luis,Luis@gmail.com,993994620 | 1,Javier,sharvel.irigoyen@gmail.com,993994620 | 
-12,12,12,12 | 13,13,13,13 | 14,14,14,14 | 15,15,15,15 | 
-13,13,13,13 | 12,12,12,12 | 
-14,14,14,14 | 12,12,12,12 | 
-15,15,15,15 | 12,12,12,12 | 
